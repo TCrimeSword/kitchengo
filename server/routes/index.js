@@ -1,14 +1,10 @@
 // const routeName = require('../../configs').routeConfig.api;
 const { errorHandling } = require('../utils/errorHandling');
 const routeName = require('../configs/index').routeConfig;
-const UserRouter = require('./user.route');
-const AccountRouter = require('./account.route');
 function route(app) {
   app.get('/health', (req, res) => {
     res.send('OK');
   });
-  app.use('/', AccountRouter);
-  app.use(routeName.api.User, UserRouter);
 
   /**
    * Handle error 404
