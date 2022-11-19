@@ -1,5 +1,3 @@
-const createError = require('http-errors');
-
 class CustomError extends Error {
   constructor(code, statusCode, message) {
     super(message);

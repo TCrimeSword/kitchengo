@@ -1,10 +1,22 @@
 // const routeName = require('../../configs').routeConfig.api;
 const { errorHandling } = require('../utils/errorHandling');
 const routeName = require('../configs/index').routeConfig;
+const AccountRouter = require('./account.route');
+const RecipeRouter = require('./recipe.route');
+const BlogRouter = require('./blog.route');
+const CategoryRouter = require('./category.route');
+const TagRouter = require('./tag.route');
+
 function route(app) {
   app.get('/health', (req, res) => {
     res.send('OK');
   });
+
+  app.use(routeName.base.Home, AccountRouter);
+  app.use(routeName.api.Recipe, RecipeRouter);
+  app.use(routeName.api.Blog, BlogRouter);
+  app.use(routeName.api.Category, CategoryRouter);
+  app.use(routeName.api.Tag, TagRouter);
 
   /**
    * Handle error 404
