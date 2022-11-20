@@ -30,7 +30,9 @@ exports.resgister = async (req, res, next) => {
   const account = await AccountRepo.getByUserNameOrEmail(username, email);
   if (account)
     throw new CustomError(2, 400, 'Username or Email is already in use');
-  const newAccount = await AccountRepo.create({ username, password, email });
+  let newAccount = await AccountRepo.create({ username, password, email });
+  newAccount = newAccount.toObject();
+  delete newAccount.password;
   return successRes(res, newAccount);
 };
 
