@@ -8,7 +8,7 @@ class RecipeRepo {
   }
 
   async findById(id) {
-    const recipe = await Recipe.findById(id);
+    const recipe = await Recipe.findById(id).populate('author');
     if (!recipe) throw new CustomError(6, 404, 'Recipe not found');
     return recipe;
   }

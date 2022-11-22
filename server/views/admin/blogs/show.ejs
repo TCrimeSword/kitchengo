@@ -1,0 +1,53 @@
+<div class="container pt-3">
+  <div class="d-flex flex-row justify-content-between">
+    <h2 class="mb-3">Quản lý Blog</h2>
+    <div>
+      <a class="btn btn-primary" href="/admin/blogs/add"
+        ><i class="fas fa-plus"></i> Thêm Blog</a
+      >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-9">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Nội dung Blog</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-3">
+          <div><%-blog.content %></div>
+        </div>
+        <div class="card-footer clearfix d-flex justify-content-end">
+          <a class="btn btn-secondary mr-3" href="/admin/blogs">Quay lại</a>
+          <a class="btn btn-primary" href="/admin/blogs/edit/<%=blog.id %> "
+            >Chỉnh sửa</a
+          >
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <div class="col-3">
+      <div class="card p-3">
+        <h5>Tác giả</h5>
+        <p><strong><%=blog.author.username %></strong></p>
+        <p><span>Email:</span> <%=blog.author.email %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('[name=delBtn]').click(function (e) {
+      const id = $(this).val();
+      e.preventDefault();
+      $.ajax({
+        url: `/admin/films/${id}`,
+        type: 'delete',
+      }).done(function () {
+        window.location.reload();
+      });
+    });
+  });
+</script>

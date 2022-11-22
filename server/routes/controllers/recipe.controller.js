@@ -34,6 +34,7 @@ exports.store = async (req, res, next) => {
   successRes(res, recipe);
 };
 
+// TODO: Sửa lại cách Update image
 exports.update = async (req, res, next) => {
   validate(recipeValidate, req.body, true);
   const id = req.params.id;

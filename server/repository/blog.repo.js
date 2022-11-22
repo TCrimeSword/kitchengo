@@ -9,7 +9,11 @@ class BlogRepo {
   }
 
   async findById(id) {
-    const blog = await Blog.findById(id);
+    const blog = await Blog.findById(id).populate('author', [
+      'username',
+      'email',
+      'avatar',
+    ]);
     if (!blog) throw new CustomError(6, 404, 'Blog not found');
     return blog;
   }

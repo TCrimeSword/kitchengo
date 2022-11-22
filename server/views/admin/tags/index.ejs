@@ -1,0 +1,108 @@
+<div class="container pt-3">
+  <div class="d-flex flex-row justify-content-between">
+    <h2 class="mb-3">Quản lý Tag</h2>
+    <div>
+      <a class="btn btn-primary" href="/admin/tags/add"
+        ><i class="fas fa-plus"></i> Thêm Tag</a
+      >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Danh sách Tag</h3>
+
+          <div class="card-tools">
+            <div class="input-group input-group-sm" style="width: 150px">
+              <input
+                type="text"
+                name="table_search"
+                class="form-control float-right"
+                placeholder="Search"
+              />
+
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-default">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0">
+          <table class="table table-hover text-nowrap">
+            <thead>
+              <tr>
+                <th width="20%">Ảnh</th>
+                <th width="60%">Tên</th>
+                <th width="20%"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for (item of tags) { %>
+              <tr>
+                <td>
+                  <% if (item.image) {%>
+                  <img
+                    src="<%=item.image ?? ''%>"
+                    alt="image"
+                    style="width: 80px; height: 65px"
+                  />
+                  <% } else { %>
+                  <div></div>
+                  <% } %>
+                </td>
+                <td><%=item.name ?? ''%></td>
+                <td class="d-flex justify-content-end">
+                  <a
+                    class="btn btn-success mr-2"
+                    href="/admin/tags/edit/<%=item.id %> "
+                    >Sửa</a
+                  ><button
+                    class="btn btn-danger"
+                    name="delBtn"
+                    value="<%=item.id%>"
+                  >
+                    Xóa
+                  </button>
+                </td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix">
+          <ul class="pagination m-0 float-right">
+            <li class="page-item">
+              <a class="page-link" href="#">Trước</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Sau</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- /.card -->
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('[name=delBtn]').click(function (e) {
+      const id = $(this).val();
+      console.log(`/admin/tags/${id}`);
+      e.preventDefault();
+      $.ajax({
+        url: `/admin/tags/${id}`,
+        type: 'delete',
+      }).done(function () {
+        window.location.reload();
+      });
+    });
+  });
+</script>

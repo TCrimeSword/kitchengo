@@ -6,12 +6,14 @@ const RecipeRouter = require('./recipe.route');
 const BlogRouter = require('./blog.route');
 const CategoryRouter = require('./category.route');
 const TagRouter = require('./tag.route');
+const AdminRoute = require('./admin');
 
 function route(app) {
   app.get('/health', (req, res) => {
     res.send('OK');
   });
 
+  AdminRoute(app);
   app.use(routeName.base.Home, AccountRouter);
   app.use(routeName.api.Recipe, RecipeRouter);
   app.use(routeName.api.Blog, BlogRouter);

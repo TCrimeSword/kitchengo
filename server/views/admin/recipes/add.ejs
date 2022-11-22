@@ -1,0 +1,68 @@
+<div class="container pt-3 pb-3">
+  <h2 class="mb-3">Thêm Recipe</h2>
+  <form action="/admin/recipes" method="post">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Thêm Recipe</h3>
+
+            <div class="card-tools">
+              <button
+                type="button"
+                class="btn btn-tool"
+                data-card-widget="collapse"
+                title="Collapse"
+              >
+                <i class="fas fa-minus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="inputName">Tiêu đề</label>
+              <input
+                type="text"
+                id="inputName"
+                name="title"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="editorAddRecipe">Thông tin</label>
+              <textarea
+                name="description"
+                id="editorAddRecipe"
+                rows="10"
+                cols="80"
+              >
+              </textarea>
+            </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <a href="/admin/recipes" class="btn btn-secondary">Quay lại</a>
+        <input
+          type="submit"
+          value="Tạo Recipe mới"
+          class="btn btn-success float-right"
+        />
+      </div>
+    </div>
+  </form>
+</div>
+<script>
+  // Replace the <textarea id="editor1"> with a CKEditor 4
+  // instance, using default configuration.
+  CKEDITOR.replace('editorAddRecipe', {
+    extraPlugins: 'filebrowser',
+    filebrowserBrowseUrl: '/list', //upload location
+    filebrowserUploadMethod: 'form',
+    filebrowserUploadUrl: '/admin/recipes/image', //route
+  });
+</script>

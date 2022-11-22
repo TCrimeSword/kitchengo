@@ -79,11 +79,13 @@ const categoryValidate = (data, isUpdate) => {
   let categorySchema;
   if (isUpdate) {
     categorySchema = Joi.object({
-      name: Joi.string().min(5).max(150),
+      name: Joi.string().min(1).max(150),
+      image: Joi.any(),
     });
   } else {
     categorySchema = Joi.object({
-      name: Joi.string().min(5).max(150).required(),
+      name: Joi.string().min(1).max(150).required(),
+      image: Joi.any(),
     });
   }
   return categorySchema.validate(data);
@@ -94,10 +96,12 @@ const tagValidate = (data, isUpdate) => {
   if (isUpdate) {
     tagSchema = Joi.object({
       name: Joi.string().min(5).max(150),
+      image: Joi.any(),
     });
   } else {
     tagSchema = Joi.object({
       name: Joi.string().min(5).max(150).required(),
+      image: Joi.any(),
     });
   }
   return tagSchema.validate(data);

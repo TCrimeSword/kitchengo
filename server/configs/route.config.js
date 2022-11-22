@@ -1,6 +1,15 @@
 const API_URL = '/api/';
+const ADMIN_URL = '/admin/';
 
 const config = {
+  admin: {
+    Dashboard: ADMIN_URL + 'dashboard',
+    Category: ADMIN_URL + 'categories',
+    Tag: ADMIN_URL + 'tags',
+    Blog: ADMIN_URL + 'blogs',
+    Account: ADMIN_URL + 'account',
+    Recipe: ADMIN_URL + 'recipes',
+  },
   api: {
     Account: API_URL + 'accounts',
     Recipe: API_URL + 'recipes',
