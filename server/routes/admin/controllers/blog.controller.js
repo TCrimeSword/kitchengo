@@ -1,5 +1,8 @@
+const path = require('path');
+const fs = require('fs');
 const BlogRepo = require('../../../repository/blog.repo');
 const { successRes } = require('../../../utils/resposeUtils');
+const { randomString } = require('../../../utils/utils');
 
 exports.index = async (req, res) => {
   const { page } = req.query;
@@ -45,4 +48,36 @@ exports.destroy = async (req, res, next) => {
   const id = req.params.id;
   await BlogRepo.delete(id);
   successRes(res);
+};
+
+exports.uploadImage = async (req, res, next) => {
+  fs.readFile(req.files.upload.path, function (err, data) {
+    const fileName = randomString();
+    var newPath = path.join(
+      __dirname,
+      '../../../public/images/blogs/' + fileName
+    );
+    // __dirname + '../../../public/images/recipes/' + req.files.upload.name;
+    fs.writeFile(newPath, data, function (err) {
+      if (err) console.log({ err: err });
+      else {
+        let url = '/images/blogs/' + fileName;
+        let msg = 'Upload successfully';
+        let funcNum = req.query.CKEditorFuncNum;
+
+        res
+          .status(201)
+          .send(
+            "<script>window.parent.CKEDITOR.tools.callFunction('" +
+              funcNum +
+              "','" +
+              url +
+              "','" +
+              msg +
+              "');</script>"
+          );
+      }
+    });
+  });
+  // console.log('ok');
 };

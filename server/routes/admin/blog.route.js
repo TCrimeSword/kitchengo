@@ -1,14 +1,11 @@
 const express = require('express');
 const multer = require('multer');
+const multipart = require('connect-multiparty');
+const multipartMiddleware = multipart();
 const upload = multer({ dest: 'public/images/blogs' });
 const BlogController = require('./controllers/blog.controller');
 const { tryCatchFunc } = require('../../utils/errorHandling');
 const router = express.Router();
-
-const cpUpload = upload.fields([
-  { name: 'image', maxCount: 1 },
-  { name: 'backgroundImage', maxCount: 1 },
-]);
 
 /**
  * Index View
@@ -44,5 +41,14 @@ router.post('/', tryCatchFunc(BlogController.store));
  * Delete
  */
 router.delete('/:id', tryCatchFunc(BlogController.destroy));
+
+/**
+ * Upload Image
+ */
+router.post(
+  '/image',
+  multipartMiddleware,
+  tryCatchFunc(BlogController.uploadImage)
+);
 
 module.exports = router;
