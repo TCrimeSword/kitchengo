@@ -1,9 +1,11 @@
+
 import 'package:flutter/material.dart';
-import 'package:kitchen_go/constants/route_name.dart';
-import 'package:kitchen_go/widgets/layouts/layout.dart';
+import 'package:mobile_chickengo_husc/widgets/layouts/layout.dart';
+
+import '../../constants/route_name.dart';
 
 class BlogPage extends StatefulWidget {
-  const BlogPage({super.key});
+ // const BlogPage({super.key});
 
   @override
   State<BlogPage> createState() => _BlogPageState();

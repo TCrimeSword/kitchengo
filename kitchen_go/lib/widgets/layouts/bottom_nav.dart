@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kitchen_go/constants/global_variable.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+
+import '../../constants/global_variable.dart';
 
 class BottomNavigation extends StatelessWidget {
   const BottomNavigation({super.key, required this.selectedIndex});

@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:kitchen_go/constants/route_name.dart';
-import 'package:kitchen_go/pages/blog.dart';
-import 'package:kitchen_go/pages/home.dart';
-import 'package:kitchen_go/pages/list.dart';
-import 'package:kitchen_go/pages/user.dart';
+import 'package:flutter/services.dart';
+import 'package:mobile_chickengo_husc/constants/route_name.dart';
+import 'package:mobile_chickengo_husc/screens/home/blog.dart';
+import 'package:mobile_chickengo_husc/screens/home/homepage.dart';
+import 'package:mobile_chickengo_husc/screens/home/list.dart';
+import 'package:mobile_chickengo_husc/screens/home/user.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ));
     return MaterialApp(
-      title: 'Kitchen GO',
       debugShowCheckedModeBanner: false,
+      title: 'Kitchen Go',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       initialRoute: RouteName.homeScreen,
       routes: {
         RouteName.homeScreen: (context) => const HomePage(),
-        RouteName.blogScreen: (context) => const BlogPage(),
+        RouteName.blogScreen: (context) => BlogPage(),
         RouteName.listIngredientScreen: (context) => const ListIngredientPage(),
         RouteName.userScreen: (context) => const UserPage(),
       },

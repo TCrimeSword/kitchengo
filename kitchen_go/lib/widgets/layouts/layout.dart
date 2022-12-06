@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kitchen_go/widgets/layouts/bottom_nav.dart';
+import 'package:mobile_chickengo_husc/constants/colors.dart';
+import 'package:mobile_chickengo_husc/widgets/layouts/bottom_nav.dart';
 
 class Layout extends StatelessWidget {
   const Layout({
@@ -17,7 +18,22 @@ class Layout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title ?? ''),
+        title: Stack(
+          children: <Widget>[
+            Container(
+              
+              width: double.infinity,
+              color: ColorConstant.BlueBoldColor,
+            ),
+            const Text(
+              'Title',
+              style: TextStyle(
+                fontSize: 22.0,
+                color: ColorConstant.BlueBoldColor,
+              ),
+            ),
+          ],
+        ),
         backgroundColor: bgColor,
       ),
       body: SafeArea(child: child),

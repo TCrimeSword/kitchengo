@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tuantran.kitchen_go">
+    package="com.example.mobile_chickengo_husc">
    <application
-        android:label="kitchen_go"
+        android:label="mobile_chickengo_husc"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
