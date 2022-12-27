@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.tuantran" "\0"
-            VALUE "FileDescription", "kitchen_go" "\0"
+            VALUE "CompanyName", "com.example" "\0"
+            VALUE "FileDescription", "mobile_chickengo_husc" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "kitchen_go" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022 com.tuantran. All rights reserved." "\0"
-            VALUE "OriginalFilename", "kitchen_go.exe" "\0"
-            VALUE "ProductName", "kitchen_go" "\0"
+            VALUE "InternalName", "mobile_chickengo_husc" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022 com.example. All rights reserved." "\0"
+            VALUE "OriginalFilename", "mobile_chickengo_husc.exe" "\0"
+            VALUE "ProductName", "mobile_chickengo_husc" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

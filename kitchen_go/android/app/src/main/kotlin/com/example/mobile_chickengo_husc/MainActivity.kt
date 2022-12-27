@@ -1,4 +1,4 @@
-package com.tuantran.kitchen_go
+package com.example.mobile_chickengo_husc
 
 import io.flutter.embedding.android.FlutterActivity
 

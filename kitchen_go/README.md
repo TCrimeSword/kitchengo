@@ -1,4 +1,4 @@
-# kitchen_go
+# mobile_chickengo_husc
 
 A new Flutter project.
 
