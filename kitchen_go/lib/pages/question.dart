@@ -24,7 +24,7 @@ class _QuestionPageState extends State<QuestionPage> {
           child: Stack(
             children: [
               const rive.RiveAnimation.asset(
-                "animations/question.riv",
+                "assets/animations/question.riv",
                 fit: BoxFit.cover,
               ),
               Padding(
