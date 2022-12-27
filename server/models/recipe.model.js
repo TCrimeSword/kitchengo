@@ -26,6 +26,9 @@ const recipeSchema = new Schema(
         url: { type: String, required: true },
       },
     ],
+    steps: [{ type: String }],
+    timePrepare: { type: String },
+    timeCook: { type: String },
   },
   {
     timestamps: true,

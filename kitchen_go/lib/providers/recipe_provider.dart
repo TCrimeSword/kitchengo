@@ -12,10 +12,6 @@ class RecipeProvider extends ChangeNotifier {
   List<Recipe> listRecipe = [];
   List<Category> listCategory = [];
   void init() async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setString('userId', '63783ad436f0e4df22be9dcd');
-    prefs.setString('token',
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOiI2Mzc4M2FkNDM2ZjBlNGRmMjJiZTlkY2QiLCJpYXQiOjE2NzIxMDE0NDEsImV4cCI6MTY3MjE0NDY0MX0.mB2gr9po3QAzdgO-CxyiSVVi7GgRVewlmw_f3OVrP8o');
     await getList();
     await getListCategory();
   }

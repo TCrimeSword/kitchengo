@@ -3,7 +3,13 @@ const { CustomError } = require('../utils/errorHandling');
 
 class RecipeRepo {
   async getList() {
-    const list = await Recipe.find();
+    const list = await Recipe.find()
+      .populate('author', '-password -refreshToken')
+      .populate({
+        path: 'comments',
+        populate: { path: 'account', select: '-password -refreshToken' },
+      });
+    // list['comments'].populate('account');
     return list;
   }
 
