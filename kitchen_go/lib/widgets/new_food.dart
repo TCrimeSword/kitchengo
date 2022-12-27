@@ -29,7 +29,7 @@ class NewFood extends StatelessWidget {
                                 Container(
                                   alignment: Alignment.centerLeft,
                                   child: Image.asset(
-                                    'assets/images/food1.png',
+                                    'assets/images/cate01.png',
                                     fit: BoxFit.fitHeight,
                                     scale: 1.01,
                                   ),

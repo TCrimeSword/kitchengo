@@ -5,11 +5,12 @@ import 'package:kitchen_go/providers/account_provider.dart';
 import 'package:kitchen_go/providers/recipe_provider.dart';
 import 'package:kitchen_go/widgets/favorite_food.dart';
 import 'package:kitchen_go/widgets/layouts/layout.dart';
+import 'package:kitchen_go/widgets/new_food.dart';
 import 'package:kitchen_go/widgets/recently_viewed.dart';
 import 'package:provider/provider.dart';
 
+import '../constants/colors.dart';
 import '../icons/my_flutter_app_icons.dart';
-import '../widgets/new_food.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
