@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kitchen_go/pages/question.dart';
+import 'package:kitchen_go/providers/recipe_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
 import 'dart:async';
 
@@ -15,6 +17,8 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    var recipeProvider = Provider.of<RecipeProvider>(context, listen: false);
+    recipeProvider.init();
     startTime();
   }
 
@@ -32,7 +36,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(child: RiveAnimation.asset('animations/fianl2.riv')),
+      body: Center(child: RiveAnimation.asset('assets/animations/fianl2.riv')),
     );
   }
 }
