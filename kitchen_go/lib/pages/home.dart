@@ -113,7 +113,9 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                NewFood()
+                NewFood(
+                  listRecipes: data.listRecipe,
+                )
               ],
             ),
           );

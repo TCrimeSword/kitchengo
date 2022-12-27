@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
 class AuthorDetail extends StatelessWidget {
-  const AuthorDetail({super.key});
-
+  AuthorDetail({super.key, required this.authorName});
+  String authorName;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -12,9 +12,12 @@ class AuthorDetail extends StatelessWidget {
             padding: EdgeInsets.only(left: 15, top: 5),
             child: Row(
               children: [
-                Image.asset(
-                  'assets/images/Ava01.png',
+                Image.network(
+                  'https://www.w3schools.com/howto/img_avatar.png',
                   scale: 1.0,
+                  width: 40,
+                  height: 40,
+                  fit: BoxFit.cover,
                 ),
                 Padding(
                   padding: EdgeInsets.only(right: 5),
