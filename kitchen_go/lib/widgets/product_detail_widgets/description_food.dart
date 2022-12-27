@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class DescriptioinFood extends StatelessWidget {
-  const DescriptioinFood({super.key});
-
+  DescriptioinFood({super.key, required this.description});
+  String description;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -10,10 +10,9 @@ class DescriptioinFood extends StatelessWidget {
         children: [
           Container(
             width: 380,
-            child: const Padding(
+            child: Padding(
               padding: EdgeInsets.only(top: 5, left: 10, right: 10),
-              child: Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna.',
+              child: Text(description,
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                       fontSize: 16,

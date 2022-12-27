@@ -1,13 +1,76 @@
 import 'package:flutter/material.dart';
+import 'package:kitchen_go/constants/colors.dart';
+import 'package:kitchen_go/models/ingredient.dart';
 
 class MealPreparation extends StatelessWidget {
-  const MealPreparation({super.key});
-
+  MealPreparation(
+      {super.key,
+      required this.mealCount,
+      required this.increaseMealCount,
+      required this.decreaseMealCount,
+      required this.listIngredient});
+  List<Ingredient> listIngredient;
+  int mealCount;
+  Function increaseMealCount;
+  Function decreaseMealCount;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
+          Container(
+            padding: EdgeInsets.only(
+              top: 20,
+              left: 15,
+            ),
+            child: Row(children: [
+              const Text(
+                'Khẩu phần ăn ',
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Exo'),
+              ),
+              Ink(
+                decoration: ShapeDecoration(
+                    color: Color(0xFFF5F5F5),
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        width: 0.1,
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.circular(10.0),
+                    )),
+                child: IconButton(
+                  icon: Icon(Icons.remove),
+                  color: ColorConstant.BlueBoldColor,
+                  onPressed: () => decreaseMealCount(),
+                  iconSize: 25,
+                ),
+              ),
+              Text(
+                mealCount.toString(),
+                style: TextStyle(fontSize: 18),
+              ),
+              Ink(
+                decoration: ShapeDecoration(
+                    color: Color(0xFFF5F5F5),
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        width: 0.1,
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.circular(10.0),
+                    )),
+                child: IconButton(
+                  icon: Icon(Icons.add),
+                  color: ColorConstant.BlueBoldColor,
+                  onPressed: () => increaseMealCount(),
+                  iconSize: 25,
+                ),
+              ),
+            ]),
+          ),
           Container(
               padding: EdgeInsets.only(
                 top: 20,
@@ -22,221 +85,37 @@ class MealPreparation extends StatelessWidget {
                       fontFamily: 'Exo'),
                 ),
               ])),
-          Container(
-            // color: Colors.amber,
-            padding: const EdgeInsets.only(left: 20, top: 10, right: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  "Xì dầu",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Exo'),
-                ),
-                Text(
-                  "30ml",
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Exo'),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            // color: Colors.amber,
-            padding: const EdgeInsets.only(left: 20, top: 10, right: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  "Rượu mirin",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Exo'),
-                ),
-                Text(
-                  "30ml",
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Exo'),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            // color: Colors.amber,
-            padding: const EdgeInsets.only(left: 20, top: 10, right: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  "Trứng",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Exo'),
-                ),
-                Text(
-                  "3 quả",
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Exo'),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            // color: Colors.amber,
-            padding: const EdgeInsets.only(left: 20, top: 10, right: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  "Bột mì",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Exo'),
-                ),
-                Text(
-                  "100g",
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Exo'),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            // color: Colors.amber,
-            padding: const EdgeInsets.only(left: 20, top: 10, right: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  "Bột mì",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Exo'),
-                ),
-                Text(
-                  "100g",
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Exo'),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            // color: Colors.amber,
-            padding: const EdgeInsets.only(left: 20, top: 10, right: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  "Hành lá",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Exo'),
-                ),
-                Text(
-                  "100g",
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Exo'),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            // color: Colors.amber,
-            padding: const EdgeInsets.only(left: 20, top: 10, right: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  "Muối ",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Exo'),
-                ),
-                Text(
-                  "1 thìa cà phê",
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Exo'),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            // color: Colors.amber,
-            padding: const EdgeInsets.only(left: 20, top: 10, right: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  "Tiêu",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Exo'),
-                ),
-                Text(
-                  "1/2 thìa cà phê",
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Exo'),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            // color: Colors.amber,
-            padding: const EdgeInsets.only(left: 20, top: 10, right: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  "Đường",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Exo'),
-                ),
-                Text(
-                  "2 thìa canh",
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Exo'),
-                ),
-              ],
-            ),
+          Column(
+            children: [
+              ...listIngredient
+                  .map(
+                    (e) => Container(
+                      padding:
+                          const EdgeInsets.only(left: 20, top: 10, right: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            e.name,
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'Exo'),
+                          ),
+                          Text(
+                            '${e.amount * mealCount} ${e.unit!}',
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'Exo'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                  .toList()
+            ],
           ),
         ],
       ),

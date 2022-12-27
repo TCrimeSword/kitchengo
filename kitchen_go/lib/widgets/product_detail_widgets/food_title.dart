@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kitchen_go/constants/api.dart';
 
 class FoodTitle extends StatelessWidget {
-  const FoodTitle({super.key});
-
+  FoodTitle({super.key, required this.title, required this.image});
+  String title;
+  String image;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -10,9 +12,9 @@ class FoodTitle extends StatelessWidget {
         children: [
           Container(
               padding: EdgeInsets.only(top: 20, left: 15),
-              child: Row(children: const [
+              child: Row(children: [
                 Text(
-                  'Katsudon',
+                  title,
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w700,
@@ -21,8 +23,8 @@ class FoodTitle extends StatelessWidget {
               ])),
           Container(
             padding: EdgeInsets.only(top: 5, left: 15, right: 15),
-            child: Image.asset(
-              'assets/images/Rectangle01.png',
+            child: Image.network(
+              Api.getImageUrl(image),
               fit: BoxFit.cover,
               scale: 1.0,
             ),

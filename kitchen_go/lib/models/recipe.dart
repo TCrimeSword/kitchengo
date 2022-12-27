@@ -8,7 +8,7 @@ class Recipe {
   String? description;
   Author? author;
   String? image;
-  List<dynamic>? ingredients;
+  List<Ingredient>? ingredients;
   List<Comment>? comments;
   List<String>? steps;
   Recipe({
