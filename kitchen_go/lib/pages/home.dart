@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kitchen_go/constants/route_name.dart';
+import 'package:kitchen_go/pages/category.dart';
 import 'package:kitchen_go/providers/account_provider.dart';
 import 'package:kitchen_go/providers/recipe_provider.dart';
 import 'package:kitchen_go/widgets/layouts/layout.dart';
@@ -27,7 +28,23 @@ class _HomePageState extends State<HomePage> {
         bgColor: Colors.blue,
         selectedIndex: RouteName.homeScreenIndex,
         child: Consumer<RecipeProvider>(builder: (context, data, _) {
-          return Container(child: Text('Trang chủ'));
+          return Container(
+              child: Column(
+            children: [
+              Text('Trang chủ'),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CategoryPage(
+                                category: data.listCategory[0],
+                              )),
+                    );
+                  },
+                  child: Text('Qua trang category')),
+            ],
+          ));
         }));
   }
 }

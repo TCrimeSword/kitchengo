@@ -3,12 +3,34 @@ const { CustomError } = require('../utils/errorHandling');
 
 class CategoryRepo {
   async getList() {
-    const list = await Category.find();
+    const list = await Category.find()
+      .populate('recipes')
+      .populate({
+        path: 'recipes',
+        populate: [
+          {
+            path: 'comments',
+            populate: { path: 'account', select: '-password -refreshToken' },
+          },
+          {
+            path: 'author',
+            select: '-password -refreshToken',
+          },
+        ],
+      });
     return list;
   }
 
   async findById(id) {
-    const category = await Category.findById(id);
+    const category = await Category.findById(id)
+      .populate('recipes')
+      .populate({
+        path: 'recipes',
+        populate: {
+          path: 'comments',
+          populate: { path: 'account', select: '-password -refreshToken' },
+        },
+      });
     if (!category) throw new CustomError(6, 404, 'Category not found');
     return category;
   }
@@ -16,7 +38,15 @@ class CategoryRepo {
   async findByName(name) {
     const category = await Category.findOne({
       name: { $regex: name, $option: 'i' },
-    });
+    })
+      .populate('recipes')
+      .populate({
+        path: 'recipes',
+        populate: {
+          path: 'comments',
+          populate: { path: 'account', select: '-password -refreshToken' },
+        },
+      });
     return category;
   }
 

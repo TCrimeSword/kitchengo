@@ -3,12 +3,12 @@ const { CustomError } = require('../utils/errorHandling');
 
 class TagRepo {
   async getList() {
-    const list = await Tag.find();
+    const list = await Tag.find().populate('recipes');
     return list;
   }
 
   async findById(id) {
-    const tag = await Tag.findById(id);
+    const tag = await Tag.findById(id).populate('recipes');
     if (!tag) throw new CustomError(6, 404, 'Tag not found');
     return tag;
   }
@@ -16,7 +16,7 @@ class TagRepo {
   async findByName(name) {
     const tag = await Tag.findOne({
       name: { $regex: name, $option: 'i' },
-    });
+    }).populate('recipes');
     return tag;
   }
 

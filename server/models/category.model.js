@@ -3,12 +3,14 @@ const { Schema } = mongoose;
 
 const categorySchema = new Schema(
   {
-    name: { type: String, required: true }, // String is shorthand for {type: String}
+    name: { type: String, required: true },
     image: { type: String, required: true },
+    description: { type: String },
+    recipes: [{ type: Schema.Types.ObjectId, ref: 'Recipe' }],
   },
   {
     timestamps: true,
   }
 );
-const CategoryModel = mongoose.model('Tag', categorySchema);
+const CategoryModel = mongoose.model('Category', categorySchema);
 module.exports = CategoryModel;
