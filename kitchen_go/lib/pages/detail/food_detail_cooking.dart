@@ -137,7 +137,9 @@ class _FoodDetailCookingState extends State<FoodDetailCooking> {
                               fontFamily: 'Exo'),
                         ),
                       ])),
-                  // RecentlyViewed()
+                  RecentlyViewed(
+                    listRecipes: [],
+                  )
                 ],
               ),
             ),
