@@ -8,6 +8,9 @@ import 'package:kitchen_go/widgets/layouts/layout.dart';
 import 'package:kitchen_go/widgets/recently_viewed.dart';
 import 'package:provider/provider.dart';
 
+import '../icons/my_flutter_app_icons.dart';
+import '../widgets/new_food.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -94,7 +97,23 @@ class _HomePageState extends State<HomePage> {
                 ),
                 FavoriteFood(
                   listCategory: data.listCategory,
-                )
+                ),
+                Container(
+                  padding: EdgeInsets.only(left: 15),
+                  child: Row(
+                    children: const [
+                      Text(
+                        'Mới nhất',
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'Exo'),
+                      ),
+                      Icon(Icons.arrow_forward_ios)
+                    ],
+                  ),
+                ),
+                NewFood()
               ],
             ),
           );
