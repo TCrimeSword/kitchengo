@@ -3,8 +3,10 @@ const { Schema } = mongoose;
 
 const tagSchema = new Schema(
   {
-    name: { type: String, required: true }, // String is shorthand for {type: String}
+    name: { type: String, required: true },
+    description: { type: String },
     image: { type: String, required: true },
+    recipes: { type: Schema.Types.ObjectId, ref: 'Recipe' },
   },
   {
     timestamps: true,

@@ -20,12 +20,7 @@ const recipeSchema = new Schema(
         content: { type: String, required: true },
       },
     ],
-    images: [
-      {
-        id: Schema.Types.ObjectId,
-        url: { type: String, required: true },
-      },
-    ],
+    image: { type: String },
     steps: [{ type: String }],
     timePrepare: { type: String },
     timeCook: { type: String },
