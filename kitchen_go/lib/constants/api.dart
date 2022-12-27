@@ -12,4 +12,8 @@ class Api {
   static getCommentUrl(String type, String id) {
     return '$baseUrlApi/$type/$id/comments';
   }
+
+  static getImageUrl(String image) {
+    return '$baseUrl$image';
+  }
 }
