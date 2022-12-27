@@ -21,7 +21,7 @@ exports.login = async (req, res, next) => {
   const refreshToken = jwtService.signRefreshToken(account.id.toString());
   account.refreshToken = refreshToken;
   await account.save();
-  return successRes(res, { accessToken, refreshToken });
+  return successRes(res, { userId: account.id, accessToken, refreshToken });
 };
 
 exports.resgister = async (req, res, next) => {
