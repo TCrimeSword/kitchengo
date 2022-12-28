@@ -9,6 +9,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AccountProvider extends ChangeNotifier {
   String usernameSave = '';
   String passwordSave = '';
+  bool isLogin = false;
+  void init() async {
+    final prefs = await SharedPreferences.getInstance();
+    isLogin = (prefs.getString('userId') != null);
+  }
+
+  Future<bool> check() async {
+    final prefs = await SharedPreferences.getInstance();
+    return (prefs.getString('userId') != null);
+  }
+
   Future<bool> login(String username, String password) async {
     var client = http.Client();
     var response = await client.post(Uri.parse(Api.url['LoginApi']!),
@@ -18,6 +29,7 @@ class AccountProvider extends ChangeNotifier {
       final prefs = await SharedPreferences.getInstance();
       usernameSave = username;
       passwordSave = password;
+      isLogin = true;
       prefs.setString('userId', responseJson['data']['userId']);
       prefs.setString('token', responseJson['data']['accessToken']);
       prefs.setString('refreshToken', responseJson['data']['refreshToken']);
@@ -43,6 +55,9 @@ class AccountProvider extends ChangeNotifier {
       prefs.remove('userId');
       prefs.remove('token');
       prefs.remove('refreshToken');
+      isLogin = false;
+      usernameSave = '';
+      passwordSave = '';
       return true;
     } else {
       return false;

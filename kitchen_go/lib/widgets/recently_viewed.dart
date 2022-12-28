@@ -120,7 +120,7 @@ class RecentlyViewed extends StatelessWidget {
                               //Padding(padding: EdgeInsets.only(top: 10, left: 50)),
                               Container(
                                 width: 180,
-                                height: 40,
+                                height: 60,
                                 child: Container(
                                   margin: EdgeInsets.only(top: 10),
                                   padding: EdgeInsets.only(left: 5),

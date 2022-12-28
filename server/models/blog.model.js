@@ -13,12 +13,7 @@ const blogSchema = new Schema(
         content: { type: String, required: true },
       },
     ],
-    images: [
-      {
-        id: Schema.Types.ObjectId,
-        url: { type: String, required: true },
-      },
-    ],
+    images: { type: String },
   },
   {
     timestamps: true,

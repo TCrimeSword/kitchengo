@@ -132,5 +132,3 @@ class FavoriteFood extends StatelessWidget {
     );
   }
 }
-
-class BlueBoldColor {}

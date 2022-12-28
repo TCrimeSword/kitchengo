@@ -6,6 +6,7 @@ import 'package:kitchen_go/pages/list.dart';
 import 'package:kitchen_go/pages/splash.dart';
 import 'package:kitchen_go/pages/user.dart';
 import 'package:kitchen_go/providers/account_provider.dart';
+import 'package:kitchen_go/providers/blog_provider.dart';
 import 'package:kitchen_go/providers/recipe_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(create: (_) => RecipeProvider()),
           ChangeNotifierProvider(create: (_) => AccountProvider()),
+          ChangeNotifierProvider(create: (_) => BlogProvider()),
         ],
         child: MaterialApp(
           title: 'Kitchen GO',

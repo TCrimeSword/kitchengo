@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kitchen_go/constants/route_name.dart';
 import 'package:kitchen_go/pages/category.dart';
+import 'package:kitchen_go/pages/search.dart';
 import 'package:kitchen_go/providers/account_provider.dart';
 import 'package:kitchen_go/providers/recipe_provider.dart';
 import 'package:kitchen_go/widgets/favorite_food.dart';
@@ -54,6 +55,15 @@ class _HomePageState extends State<HomePage> {
     return Layout(
         bgColor: Colors.blue,
         selectedIndex: RouteName.homeScreenIndex,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (c) => SearchPage()));
+            },
+          ),
+        ],
         child: Consumer<RecipeProvider>(builder: (context, data, _) {
           return SingleChildScrollView(
             child: Column(
