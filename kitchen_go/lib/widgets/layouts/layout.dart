@@ -8,17 +8,20 @@ class Layout extends StatelessWidget {
     this.title,
     required this.child,
     required this.selectedIndex,
+    this.actions,
   });
   final Color bgColor;
   final String? title;
   final Widget child;
   final int selectedIndex;
+  final List<Widget>? actions;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(title ?? ''),
         backgroundColor: bgColor,
+        actions: actions,
       ),
       body: SafeArea(child: child),
       bottomNavigationBar: BottomNavigation(selectedIndex: selectedIndex),

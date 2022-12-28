@@ -217,7 +217,7 @@ class NewFood extends StatelessWidget {
                             //Padding(padding: EdgeInsets.only(top: 10, left: 50)),
                             Container(
                               width: 200,
-                              height: 60,
+                              height: 80,
                               child: Padding(
                                 padding: EdgeInsets.only(top: 1, left: 5),
                                 child: Text(item.title,

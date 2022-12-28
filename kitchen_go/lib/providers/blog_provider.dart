@@ -7,9 +7,12 @@ import 'package:kitchen_go/constants/api.dart';
 import 'package:kitchen_go/models/blog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class RecipeProvider extends ChangeNotifier {
+class BlogProvider extends ChangeNotifier {
   List<Blog> listBlog = [];
-  void init() async {}
+  void init() async {
+    await getList();
+  }
+
   Future<List<Blog>> getList() async {
     var client = http.Client();
     var jsonRecipeStr = await client.get(Uri.parse(Api.url['BlogApi']!));

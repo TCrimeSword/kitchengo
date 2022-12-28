@@ -225,43 +225,49 @@ class _QuestionPageState extends State<QuestionPage> {
                             }
                           });
                         }),
-                        child: Container(
-                          height: 59,
-                          width: 323,
-                          decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                              begin: Alignment.bottomLeft,
-                              end: Alignment.topRight,
-                              stops: [
-                                0.35,
-                                0.8,
-                              ],
-                              colors: [
-                                Color.fromARGB(255, 252, 129, 0),
-                                Color.fromARGB(255, 25, 250, 110)
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushReplacementNamed(
+                                context, RouteName.homeScreen);
+                          },
+                          child: Container(
+                            height: 59,
+                            width: 323,
+                            decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                begin: Alignment.bottomLeft,
+                                end: Alignment.topRight,
+                                stops: [
+                                  0.35,
+                                  0.8,
+                                ],
+                                colors: [
+                                  Color.fromARGB(255, 252, 129, 0),
+                                  Color.fromARGB(255, 25, 250, 110)
+                                ],
+                              ),
+                              borderRadius: BorderRadius.circular(27.5),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: const Color.fromARGB(255, 0, 0, 0)
+                                      .withOpacity(0.25),
+                                  spreadRadius: 0,
+                                  blurRadius: 8,
+                                  offset: const Offset(
+                                      0, 4), // changes position of shadow
+                                ),
                               ],
                             ),
-                            borderRadius: BorderRadius.circular(27.5),
-                            boxShadow: [
-                              BoxShadow(
-                                color: const Color.fromARGB(255, 0, 0, 0)
-                                    .withOpacity(0.25),
-                                spreadRadius: 0,
-                                blurRadius: 8,
-                                offset: const Offset(
-                                    0, 4), // changes position of shadow
-                              ),
-                            ],
-                          ),
-                          // ignore: prefer_const_constructors
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              !isAnswer ? "Tiếp theo" : "Hoàn thành",
-                              style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: Color.fromARGB(255, 255, 255, 255),
+                            // ignore: prefer_const_constructors
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                !isAnswer ? "Tiếp theo" : "Hoàn thành",
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color.fromARGB(255, 255, 255, 255),
+                                ),
                               ),
                             ),
                           ),

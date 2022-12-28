@@ -4,12 +4,22 @@ const { CustomError } = require('../utils/errorHandling');
 //TODO mock data Blog
 class BlogRepo {
   async getList() {
-    const list = await Blog.find();
+    const list = await Blog.find()
+      .populate('author', '-password -refreshToken')
+      .populate({
+        path: 'comments',
+        populate: { path: 'account', select: '-password -refreshToken' },
+      });
     return list;
   }
 
   async findById(id) {
-    const blog = await Blog.findById(id);
+    const blog = await Blog.findById(id)
+      .populate('author', '-password -refreshToken')
+      .populate({
+        path: 'comments',
+        populate: { path: 'account', select: '-password -refreshToken' },
+      });
     if (!blog) throw new CustomError(6, 404, 'Blog not found');
     return blog;
   }
@@ -17,7 +27,12 @@ class BlogRepo {
   async findByTitle(title) {
     const blog = await Blog.findOne({
       title: { $regex: title, $option: 'i' },
-    });
+    })
+      .populate('author', '-password -refreshToken')
+      .populate({
+        path: 'comments',
+        populate: { path: 'account', select: '-password -refreshToken' },
+      });
     return blog;
   }
 

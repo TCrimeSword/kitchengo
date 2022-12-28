@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:kitchen_go/constants/colors.dart';
+import 'package:kitchen_go/constants/route_name.dart';
 import 'package:kitchen_go/models/recipe.dart';
+import 'package:kitchen_go/providers/recipe_provider.dart';
+import 'package:kitchen_go/widgets/layouts/bottom_nav.dart';
 import 'package:kitchen_go/widgets/product_detail_widgets/author_detail.dart';
 import 'package:kitchen_go/widgets/product_detail_widgets/comments.dart';
 import 'package:kitchen_go/widgets/product_detail_widgets/description_food.dart';
 import 'package:kitchen_go/widgets/product_detail_widgets/food_title.dart';
 import 'package:kitchen_go/widgets/product_detail_widgets/introduction_cooking.dart';
-import 'package:kitchen_go/widgets/product_detail_widgets/meal_count.dart';
 import 'package:kitchen_go/widgets/product_detail_widgets/meal_preparation.dart';
 import 'package:kitchen_go/widgets/product_detail_widgets/time_preparation.dart';
 import 'package:kitchen_go/widgets/recently_viewed.dart';
+import 'package:provider/provider.dart';
 
 class FoodDetailCooking extends StatefulWidget {
   FoodDetailCooking(
@@ -56,7 +59,9 @@ class _FoodDetailCookingState extends State<FoodDetailCooking> {
         ),
         leading: IconButton(
           icon: const Icon(Icons.chevron_left),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         actions: [
           IconButton(
@@ -69,6 +74,8 @@ class _FoodDetailCookingState extends State<FoodDetailCooking> {
           )
         ],
       ),
+      bottomNavigationBar:
+          BottomNavigation(selectedIndex: RouteName.homeScreenIndex),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -122,39 +129,47 @@ class _FoodDetailCookingState extends State<FoodDetailCooking> {
                     steps: widget.recipe.steps ?? [],
                   ),
                   const Padding(padding: EdgeInsets.only(top: 30)),
-                  Container(
-                    height: 60,
-                    child: const Center(
-                      child: Padding(
-                        padding: EdgeInsets.all(20),
-                        child: Text(
-                          "Bắt đầu nấu nào",
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Exo'),
+                  InkWell(
+                    onTap: () {
+                      Provider.of<RecipeProvider>(context, listen: false)
+                          .addToDoList(widget.recipe.ingredients!);
+                      Navigator.pushReplacementNamed(
+                          context, RouteName.listIngredientScreen);
+                    },
+                    child: Container(
+                      height: 60,
+                      child: const Center(
+                        child: Padding(
+                          padding: EdgeInsets.all(20),
+                          child: Text(
+                            "Bắt đầu nấu nào",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'Exo'),
+                          ),
                         ),
                       ),
-                    ),
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          colors: [
-                            ColorConstant.BlueBoldColor,
-                            ColorConstant.BlueMediumColor,
-                          ]),
-                      borderRadius: BorderRadius.circular(30),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 15.0,
-                            offset: const Offset(
-                                0.0, 0.75) // changes position of shadow
-                            ),
-                      ],
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                            colors: [
+                              ColorConstant.BlueBoldColor,
+                              ColorConstant.BlueMediumColor,
+                            ]),
+                        borderRadius: BorderRadius.circular(30),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 15.0,
+                              offset: const Offset(
+                                  0.0, 0.75) // changes position of shadow
+                              ),
+                        ],
+                      ),
                     ),
                   ),
                   Container(
